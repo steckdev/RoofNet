@@ -6,8 +6,9 @@ namespace RoofTool.Domain.Entities
     {
         public Guid Id { get; set; }
         public Guid PropertyId { get; set; }
-        public required Property Property { get; set; }
+        public Property? Property { get; set; }
         public OpportunityStatus Status { get; set; }
         public string? Notes { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

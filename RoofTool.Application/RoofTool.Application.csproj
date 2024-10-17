@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RoofTool.Domain\RoofTool.Domain.csproj" />
+    <ProjectReference Include="..\RoofTool.Infrastructure\RoofTool.Infrastructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
