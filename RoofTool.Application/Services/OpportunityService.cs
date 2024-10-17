@@ -20,7 +20,7 @@ namespace RoofTool.Application.Services
             return await _repository.AddAsync(opportunity);
         }
 
-        public async Task<Opportunity> GetOpportunityByIdAsync(Guid id)
+        public async Task<Opportunity?> GetOpportunityByIdAsync(Guid id)
         {
             return await _repository.GetByIdAsync(id);
         }
