@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RoofTool.Domain.Entities;
+﻿using RoofTool.Domain.Entities;
 using RoofTool.Infrastructure.Interfaces;
 
 namespace RoofTool.Infrastructure.Repositories

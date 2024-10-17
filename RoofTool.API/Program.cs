@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RoofTool.Application.Interfaces;
 using RoofTool.Application.Services;
-using RoofTool.Infrastructure;
 using RoofTool.Infrastructure.Interfaces;
 using RoofTool.Infrastructure.Repositories;
+using RoofTool.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
