@@ -23,7 +23,8 @@ namespace RoofTool.Tests.Services
                             Address = "123 Main St",
                             Owner = new Owner
                             {
-                                FullName = "John Doe"
+                                FullName = "John Doe",
+                                Properties = new List<Property>()
                             }
                         },
                         Edges = new List<PolygonEdge>()
@@ -37,7 +38,8 @@ namespace RoofTool.Tests.Services
                             Address = "123 Main St",
                             Owner = new Owner
                             {
-                                FullName = "John Doe"
+                                FullName = "John Doe",
+                            Properties = new List<Property>()
                             }
                         },
                         Edges = new List<PolygonEdge>()

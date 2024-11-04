@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RoofTool.Domain.Entities;
+
 namespace RoofTool.Infrastructure
 {
     public class RoofToolDbContext : DbContext
     {
-        public RoofToolDbContext(DbContextOptions<RoofToolDbContext> options) : base(options)
+        public RoofToolDbContext(DbContextOptions<RoofToolDbContext> options)
+            : base(options)
         {
         }
 

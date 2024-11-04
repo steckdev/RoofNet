@@ -3,23 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofTool.Domain", "RoofTool.Domain\RoofTool.Domain.csproj", "{51CA66B4-1B47-46EA-98B8-FEC2FD097260}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoofTool.Domain", "RoofTool.Domain\RoofTool.Domain.csproj", "{51CA66B4-1B47-46EA-98B8-FEC2FD097260}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofTool.Application", "RoofTool.Application\RoofTool.Application.csproj", "{82722B65-DA2F-44B5-9BD2-55BB3BF0E93F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoofTool.Application", "RoofTool.Application\RoofTool.Application.csproj", "{82722B65-DA2F-44B5-9BD2-55BB3BF0E93F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofTool.Infrastructure", "RoofTool.Infrastructure\RoofTool.Infrastructure.csproj", "{4893D642-0EEF-41B7-B28C-05F800023EAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoofTool.Infrastructure", "RoofTool.Infrastructure\RoofTool.Infrastructure.csproj", "{4893D642-0EEF-41B7-B28C-05F800023EAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofTool.API", "RoofTool.API\RoofTool.API.csproj", "{A65E1E11-C9B3-4E2E-94B0-0915D09C2C2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoofTool.API", "RoofTool.API\RoofTool.API.csproj", "{A65E1E11-C9B3-4E2E-94B0-0915D09C2C2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoofTool.Tests", "RoofTool.Tests\RoofTool.Tests.csproj", "{739B35EC-991D-471F-9DD1-2EE28FB89BE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoofTool.Tests", "RoofTool.Tests\RoofTool.Tests.csproj", "{739B35EC-991D-471F-9DD1-2EE28FB89BE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EE4B7FF7-4748-49AA-A752-7261F2EFE9F4}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{51CA66B4-1B47-46EA-98B8-FEC2FD097260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -42,5 +45,11 @@ Global
 		{739B35EC-991D-471F-9DD1-2EE28FB89BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{739B35EC-991D-471F-9DD1-2EE28FB89BE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{739B35EC-991D-471F-9DD1-2EE28FB89BE8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1497161F-ECE8-4F56-A063-96A31CE956F4}
 	EndGlobalSection
 EndGlobal

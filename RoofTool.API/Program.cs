@@ -5,6 +5,7 @@ using RoofTool.Application.Services;
 using RoofTool.Infrastructure.Interfaces;
 using RoofTool.Infrastructure.Repositories;
 using RoofTool.Infrastructure;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,13 +20,28 @@ builder.Services.AddAuthentication("Bearer")
         };
     });
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
+                       builder.Configuration["ConnectionStrings:DefaultConnection"];
+
 builder.Services.AddDbContext<RoofToolDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IPropertyService, PropertyService>();
 builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
+builder.Services.AddScoped<IMeasurementService, MeasurementService>();
+builder.Services.AddScoped<IMeasurementRepository, MeasurementRepository>();
+builder.Services.AddScoped<IOpportunityService, OpportunityService>();
+builder.Services.AddScoped<IOpportunityRepository, OpportunityRepository>();
+builder.Services.AddScoped<IOwnerService, OwnerService>();
+builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<RoofToolDbContext>();
+    dbContext.Database.Migrate();
+}
 
 app.UseAuthentication();
 app.UseAuthorization();
