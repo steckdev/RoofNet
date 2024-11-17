@@ -11,7 +11,6 @@ namespace RoofTool.Tests.Services
         [Test]
         public void GenerateCsvReport_ShouldReturnCsvString()
         {
-            // Arrange
             var measurements = new List<Measurement>
             {
                 new Measurement
@@ -48,10 +47,8 @@ namespace RoofTool.Tests.Services
 
             var reportGenerator = new ReportGenerator();
 
-            // Act
             var csvReport = reportGenerator.GenerateCsvReport(measurements);
 
-            // Assert
             Assert.That(csvReport, Is.Not.Null);
             Assert.That(csvReport, Contains.Substring("PropertyId,Area,Slope"));
             Assert.That(csvReport, Contains.Substring(measurements[0].PropertyId.ToString()));

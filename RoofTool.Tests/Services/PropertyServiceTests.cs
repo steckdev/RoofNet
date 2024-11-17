@@ -24,7 +24,6 @@ namespace RoofTool.Tests.Services
         [Test]
         public async Task CreatePropertyAsync_ShouldReturnCreatedProperty()
         {
-            // Arrange
             var property = new Property()
             {
                 Id = Guid.NewGuid(),
@@ -37,10 +36,8 @@ namespace RoofTool.Tests.Services
             };
             _repositoryMock.Setup(r => r.AddAsync(property)).ReturnsAsync(property);
 
-            // Act
             var result = await _service.CreatePropertyAsync(property);
 
-            // Assert
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Id, Is.EqualTo(property.Id));
         }
@@ -48,7 +45,6 @@ namespace RoofTool.Tests.Services
         [Test]
         public async Task GetPropertyByIdAsync_ShouldReturnProperty()
         {
-            // Arrange
             var id = Guid.NewGuid();
             var property = new Property
             {
@@ -63,10 +59,8 @@ namespace RoofTool.Tests.Services
 
             _repositoryMock.Setup(r => r.GetByIdAsync(id)).ReturnsAsync(property);
 
-            // Act
             var result = await _service.GetPropertyByIdAsync(id);
 
-            // Assert
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Id, Is.EqualTo(id));
         }

@@ -90,12 +90,9 @@ The project is structured into several layers:
 
 ## Key Files and Directories
 
-- `RoofTool.Domain/Entities`: Contains the domain entities such as `Measurement`, `Opportunity`, `Owner`, `PolygonEdge`, `Property`, and `Report`.
-- `RoofTool.Application/Interfaces`: Contains the service interfaces such as `IMeasurementService`, `IOpportunityService`, `IOwnerService`, and `IReportService`.
-- `RoofTool.Application/Services`: Contains the service implementations.
-- `RoofTool.Infrastructure`: Contains the database context (`RoofToolDbContext`), repositories, and migrations.
-- `RoofTool.API/Controllers`: Contains the API controllers such as `MeasurementController` and `ReportController`.
-- `RoofTool.Tests`: Contains the unit and integration tests.
+- `RoofTool.Domain/Entities`: Contains the domain entities such as `Measurement`, `Opportunity`, `Owner`, `PolygonEdge`, `Property`, `Report`, and `Lead`.
+- `RoofTool.Application/Interfaces`: Contains the service interfaces such as `IMeasurementService`, `IOpportunityService`, `IOwnerService`, `IReportService`, and `ILeadService`.
+- `RoofTool.Infrastructure/Repositories`: Contains the repository implementations such as `OpportunityRepository`, `OwnerRepository`, and `LeadRepository`.
 
 ## Running Tests
 

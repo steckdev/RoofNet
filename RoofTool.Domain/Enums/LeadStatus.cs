@@ -3,8 +3,8 @@
     public enum LeadStatus
     {
         New,
-        Contacted,
-        Quoted,
+        Qualified,
+        ProposalSent,
         Closed
     }
 }
