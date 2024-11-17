@@ -6,7 +6,7 @@ using RoofTool.Domain.Enums;
 
 namespace RoofTool.API.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("api/[controller]")]
     public class OpportunityController : ControllerBase

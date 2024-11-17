@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RoofTool.Application.Interfaces;
 using RoofTool.Domain.Entities;
 
 namespace RoofTool.API.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("api/[controller]")]
     public class ReportController : ControllerBase
