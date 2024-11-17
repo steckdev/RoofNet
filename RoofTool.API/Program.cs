@@ -6,6 +6,7 @@ using RoofTool.Infrastructure.Interfaces;
 using RoofTool.Infrastructure.Repositories;
 using RoofTool.Infrastructure;
 using Microsoft.Extensions.Configuration;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,22 @@ builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
 builder.Services.AddScoped<IReportService, ReportService>();
 builder.Services.AddScoped<IReportRepository, ReportRepository>();
 
+// Add Swagger services
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "RoofTool API",
+        Version = "v1",
+        Description = "API for RoofTool application",
+        Contact = new OpenApiContact
+        {
+            Name = "Your Name",
+            Email = "your.email@example.com"
+        }
+    });
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -47,6 +64,16 @@ using (var scope = app.Services.CreateScope())
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Enable middleware to serve generated Swagger as a JSON endpoint
+app.UseSwagger();
+
+// Enable middleware to serve Swagger UI
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "RoofTool API v1.0");
+    c.RoutePrefix = string.Empty;
+});
 
 app.MapControllers();
 
