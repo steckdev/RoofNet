@@ -1,4 +1,6 @@
-﻿namespace RoofTool.Domain.ValueObjects
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace RoofTool.Domain.ValueObjects
 {
     public class ContactInfo
     {

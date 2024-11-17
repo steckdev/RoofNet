@@ -1,11 +1,12 @@
 services:
   db:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: postgres:latest
     environment:
-      - SA_PASSWORD=YourStrong!Passw0rd
-      - ACCEPT_EULA=Y
+      - POSTGRES_DB=RoofToolDb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=YourStrong!Passw0rd
     ports:
-      - "1433:1433"
+      - "5432:5432"
     networks:
       - rooftool-network
 
@@ -15,11 +16,11 @@ services:
       dockerfile: RoofTool.API/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=db;Database=RoofToolDb;User ID=sa;Password=YourStrong!Passw0rd;
+      - ConnectionStrings__DefaultConnection=Host=db;Database=RoofToolDb;Username=postgres;Password=YourStrong!Passw0rd;
     depends_on:
       - db
     ports:
-      - "5000:80"
+      - "5000:5000"
     networks:
       - rooftool-network
 

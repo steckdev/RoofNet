@@ -11,5 +11,6 @@ namespace RoofTool.Domain.Entities
         public RoofDetails? RoofDetails { get; set; }
         public Guid OwnerId { get; set; }
         public required Owner Owner { get; set; }
+        public List<PolygonEdge> PolygonEdges { get; set; } = new();
     }
 }

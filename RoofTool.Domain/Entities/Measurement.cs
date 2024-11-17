@@ -1,4 +1,5 @@
 ﻿using RoofTool.Domain.ValueObjects;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RoofTool.Domain.Entities
 {

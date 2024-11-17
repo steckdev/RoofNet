@@ -10,25 +10,35 @@ namespace RoofTool.API.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
+        private const string SecretKey = "YourSuperSecretKey";
+        private const string Issuer = "RoofToolIssuer";
+        private const string Audience = "RoofToolAudience";
+        private const int TokenExpiryHours = 1;
+
         [HttpPost("token")]
         public IActionResult GetToken()
         {
+            var tokenString = GenerateToken("TestUser");
+            return Ok(new { token = tokenString });
+        }
+
+        private string GenerateToken(string username)
+        {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes("YourSuperSecretKey");
+            var key = Encoding.UTF8.GetBytes(SecretKey);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Issuer = "RoofToolIssuer",
-                Audience = "RoofToolAudience",
-                Expires = DateTime.UtcNow.AddHours(1),
+                Issuer = Issuer,
+                Audience = Audience,
+                Expires = DateTime.UtcNow.AddHours(TokenExpiryHours),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, "TestUser")
+                    new Claim(ClaimTypes.Name, username)
                 })
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenString = tokenHandler.WriteToken(token);
-            return Ok(new { token = tokenString });
+            return tokenHandler.WriteToken(token);
         }
     }
 }

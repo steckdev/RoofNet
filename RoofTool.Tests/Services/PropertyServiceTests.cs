@@ -31,7 +31,8 @@ namespace RoofTool.Tests.Services
                 Address = "123 Main St",
                 Owner = new Owner()
                 {
-                    FullName = "John Doe"
+                    FullName = "John Doe",
+                    Properties = new List<Property>() { }
                 }
             };
             _repositoryMock.Setup(r => r.AddAsync(property)).ReturnsAsync(property);
@@ -55,7 +56,8 @@ namespace RoofTool.Tests.Services
                 Address = "123 Main St",
                 Owner = new Owner()
                 {
-                    FullName = "John Doe"
+                    FullName = "John Doe",
+                    Properties = new List<Property>() { }
                 }
             };
             _repositoryMock.Setup(r => r.GetByIdAsync(propertyId)).ReturnsAsync(property);
