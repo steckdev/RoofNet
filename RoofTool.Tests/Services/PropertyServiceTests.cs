@@ -49,25 +49,26 @@ namespace RoofTool.Tests.Services
         public async Task GetPropertyByIdAsync_ShouldReturnProperty()
         {
             // Arrange
-            var propertyId = Guid.NewGuid();
-            var property = new Property()
+            var id = Guid.NewGuid();
+            var property = new Property
             {
-                Id = propertyId,
+                Id = id,
                 Address = "123 Main St",
-                Owner = new Owner()
+                Owner = new Owner
                 {
                     FullName = "John Doe",
-                    Properties = new List<Property>() { }
+                    Properties = new List<Property>()
                 }
             };
-            _repositoryMock.Setup(r => r.GetByIdAsync(propertyId)).ReturnsAsync(property);
+
+            _repositoryMock.Setup(r => r.GetByIdAsync(id)).ReturnsAsync(property);
 
             // Act
-            var result = await _service.GetPropertyByIdAsync(propertyId);
+            var result = await _service.GetPropertyByIdAsync(id);
 
             // Assert
             Assert.That(result, Is.Not.Null);
-            Assert.That(result!.Id, Is.EqualTo(property.Id));
+            Assert.That(result.Id, Is.EqualTo(id));
         }
     }
 }

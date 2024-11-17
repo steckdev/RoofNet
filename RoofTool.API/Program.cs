@@ -5,7 +5,6 @@ using RoofTool.Application.Services;
 using RoofTool.Infrastructure.Interfaces;
 using RoofTool.Infrastructure.Repositories;
 using RoofTool.Infrastructure;
-using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,6 +40,30 @@ builder.Services.AddScoped<IReportRepository, ReportRepository>();
 // Add Swagger services
 builder.Services.AddSwaggerGen(c =>
 {
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter into field the word 'Bearer' followed by a space and the JWT value.",
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new List<string>()
+        }
+    });
+
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "RoofTool API",

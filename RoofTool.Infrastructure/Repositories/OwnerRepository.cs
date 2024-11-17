@@ -19,7 +19,7 @@ namespace RoofTool.Infrastructure.Repositories
             return owner;
         }
 
-        public async Task<Owner> GetByIdAsync(Guid id)
+        public async Task<Owner?> GetByIdAsync(Guid id)
         {
             return await _context.Owners
                 .Include(o => o.Properties)

@@ -53,20 +53,22 @@ namespace RoofTool.Tests.Services
         {
             // Arrange
             var propertyId = Guid.NewGuid();
-            var measurement = new Measurement()
+            var measurement = new Measurement
             {
                 Id = Guid.NewGuid(),
-                Property = new Property()
+                PropertyId = propertyId,
+                Property = new Property
                 {
                     Address = "123 Main St",
-                    Owner = new Owner()
+                    Owner = new Owner
                     {
                         FullName = "John Doe",
                         Properties = new List<Property>()
-                    },
+                    }
                 },
                 Edges = new List<PolygonEdge>()
             };
+
             _repositoryMock.Setup(r => r.GetByPropertyIdAsync(propertyId)).ReturnsAsync(measurement);
 
             // Act
@@ -74,7 +76,7 @@ namespace RoofTool.Tests.Services
 
             // Assert
             Assert.That(result, Is.Not.Null);
-            Assert.That(result.Id, Is.EqualTo(measurement.Id));
+            Assert.That(result.PropertyId, Is.EqualTo(propertyId));
         }
     }
 }

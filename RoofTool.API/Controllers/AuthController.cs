@@ -10,10 +10,12 @@ namespace RoofTool.API.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private const string SecretKey = "YourSuperSecretKey";
-        private const string Issuer = "RoofToolIssuer";
-        private const string Audience = "RoofToolAudience";
-        private const int TokenExpiryHours = 1;
+        private readonly IConfiguration _configuration;
+
+        public AuthController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         [HttpPost("token")]
         public IActionResult GetToken()
@@ -25,12 +27,12 @@ namespace RoofTool.API.Controllers
         private string GenerateToken(string username)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(SecretKey);
+            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Issuer = Issuer,
-                Audience = Audience,
-                Expires = DateTime.UtcNow.AddHours(TokenExpiryHours),
+                Issuer = _configuration["Jwt:Issuer"],
+                Audience = _configuration["Jwt:Audience"],
+                Expires = DateTime.UtcNow.AddHours(int.Parse(_configuration["Jwt:TokenExpiryHours"])),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Subject = new ClaimsIdentity(new Claim[]
                 {

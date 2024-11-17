@@ -4,7 +4,7 @@ namespace RoofTool.Domain.ValueObjects
 {
     public class ContactInfo
     {
-        public string Email { get; set; }
-        public string Phone { get; set; }
+        public required string Email { get; set; }
+        public required string Phone { get; set; }
     }
 }

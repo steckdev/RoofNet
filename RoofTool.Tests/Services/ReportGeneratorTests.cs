@@ -13,38 +13,38 @@ namespace RoofTool.Tests.Services
         {
             // Arrange
             var measurements = new List<Measurement>
+            {
+                new Measurement
                 {
-                    new Measurement
+                    Id = Guid.NewGuid(),
+                    PropertyId = Guid.NewGuid(),
+                    Property = new Property
                     {
-                        Id = Guid.NewGuid(),
-                        PropertyId = Guid.NewGuid(),
-                        Property = new Property
+                        Address = "123 Main St",
+                        Owner = new Owner
                         {
-                            Address = "123 Main St",
-                            Owner = new Owner
-                            {
-                                FullName = "John Doe",
-                                Properties = new List<Property>()
-                            }
-                        },
-                        Edges = new List<PolygonEdge>()
-                    },
-                    new Measurement
-                    {
-                        Id = Guid.NewGuid(),
-                        PropertyId = Guid.NewGuid(),
-                        Property = new Property
-                        {
-                            Address = "123 Main St",
-                            Owner = new Owner
-                            {
-                                FullName = "John Doe",
+                            FullName = "John Doe",
                             Properties = new List<Property>()
-                            }
-                        },
-                        Edges = new List<PolygonEdge>()
-                    }
-                };
+                        }
+                    },
+                    Edges = new List<PolygonEdge>()
+                },
+                new Measurement
+                {
+                    Id = Guid.NewGuid(),
+                    PropertyId = Guid.NewGuid(),
+                    Property = new Property
+                    {
+                        Address = "123 Main St",
+                        Owner = new Owner
+                        {
+                            FullName = "John Doe",
+                            Properties = new List<Property>()
+                        }
+                    },
+                    Edges = new List<PolygonEdge>()
+                }
+            };
 
             var reportGenerator = new ReportGenerator();
 
