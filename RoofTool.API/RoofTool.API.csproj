@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RoofTool.Application\RoofTool.Application.csproj" />
+    <ProjectReference Include="..\RoofTool.ServiceDefaults\RoofTool.ServiceDefaults.csproj" />
   </ItemGroup>
 
 </Project>

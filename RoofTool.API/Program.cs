@@ -43,7 +43,9 @@ builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
 builder.Services.AddScoped<IReportService, ReportService>();
 builder.Services.AddScoped<IReportRepository, ReportRepository>();
 
-// Add Swagger services
+
+builder.AddServiceDefaults();
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -94,10 +96,8 @@ using (var scope = app.Services.CreateScope())
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Enable middleware to serve generated Swagger as a JSON endpoint
 app.UseSwagger();
 
-// Enable middleware to serve Swagger UI
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "RoofTool API v1.0");
@@ -105,5 +105,6 @@ app.UseSwaggerUI(c =>
 });
 
 app.MapControllers();
+app.MapDefaultEndpoints();
 
 app.Run();
