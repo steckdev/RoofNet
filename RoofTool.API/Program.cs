@@ -32,6 +32,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<RoofToolDbContext>(options =>
     options.UseNpgsql(connectionString));
 
+builder.Services.AddScoped<ILeadService, LeadService>();
+builder.Services.AddScoped<ILeadRepository, LeadRepository>();
 builder.Services.AddScoped<IPropertyService, PropertyService>();
 builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
 builder.Services.AddScoped<IMeasurementService, MeasurementService>();
