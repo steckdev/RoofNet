@@ -23,7 +23,6 @@ namespace RoofTool.Tests.Services
         [Test]
         public async Task AddMeasurementAsync_ShouldReturnMeasurement()
         {
-            // Arrange
             var measurement = new Measurement()
             {
                 Id = Guid.NewGuid(),
@@ -40,10 +39,8 @@ namespace RoofTool.Tests.Services
             };
             _repositoryMock.Setup(r => r.AddAsync(measurement)).ReturnsAsync(measurement);
 
-            // Act
             var result = await _service.AddMeasurementAsync(measurement);
 
-            // Assert
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Id, Is.EqualTo(measurement.Id));
         }
@@ -51,7 +48,6 @@ namespace RoofTool.Tests.Services
         [Test]
         public async Task GetMeasurementByPropertyIdAsync_ShouldReturnMeasurement()
         {
-            // Arrange
             var propertyId = Guid.NewGuid();
             var measurement = new Measurement
             {
@@ -71,10 +67,8 @@ namespace RoofTool.Tests.Services
 
             _repositoryMock.Setup(r => r.GetByPropertyIdAsync(propertyId)).ReturnsAsync(measurement);
 
-            // Act
             var result = await _service.GetMeasurementByPropertyIdAsync(propertyId);
 
-            // Assert
             Assert.That(result, Is.Not.Null);
             Assert.That(result.PropertyId, Is.EqualTo(propertyId));
         }

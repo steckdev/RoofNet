@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RoofTool.Infrastructure;
@@ -11,9 +12,11 @@ using RoofTool.Infrastructure;
 namespace RoofTool.Infrastructure.Migrations
 {
     [DbContext(typeof(RoofToolDbContext))]
-    partial class RoofToolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241117185452_Lead")]
+    partial class Lead
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
