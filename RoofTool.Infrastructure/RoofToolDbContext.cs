@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RoofTool.Domain.Entities;
 using RoofTool.Domain.ValueObjects;
-using Npgsql.EntityFrameworkCore.PostgreSQL; // Add this line
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace RoofTool.Infrastructure
 {
@@ -16,7 +16,8 @@ namespace RoofTool.Infrastructure
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Opportunity> Opportunities { get; set; }
         public DbSet<Report> Reports { get; set; }
-        public DbSet<PolygonEdge> PolygonEdges { get; set; } // Add this line
+        public DbSet<PolygonEdge> PolygonEdges { get; set; }
+        public DbSet<Lead> Leads { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +34,12 @@ namespace RoofTool.Infrastructure
                 .OwnsOne(o => o.ContactInfo);
 
             modelBuilder.Entity<Property>().OwnsOne(o => o.RoofDetails);
+
+            modelBuilder.Entity<Lead>()
+                .HasOne<Owner>()
+                .WithMany()
+                .HasForeignKey(l => l.AssignedTo)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
